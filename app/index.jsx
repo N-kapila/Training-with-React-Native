@@ -1,4 +1,4 @@
-import { Image, StyleSheet} from "react-native";
+import { Image, StyleSheet, Pressable} from "react-native";
 import { Link } from "expo-router";
 
 import { HelloWave } from "@/components/HelloWave";
@@ -26,7 +26,11 @@ export default function HomeScreen() {
       style={styles.myImage}/>
 
       <ThemedView style={styles.stepContainer}>
-        <Link href={"/explore"} style={styles.exploreLink}>Explore</Link>  
+        <Link href={"/contact"} style={{marginHorizontal:"auto"}} asChild>
+        <Pressable style={styles.button}>
+            Contact Us 
+        </Pressable>
+        </Link>  
       </ThemedView>
      
     </ParallaxScrollView>
@@ -61,4 +65,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
   },
+  button:{
+    width: 200,
+    height: 50,
+    backgroundColor: "green",
+    color: "white",
+    textAlign: "center",
+    justifyContent: "center",
+    fontSize: 20,
+    borderRadius: 10,
+  }
 });
