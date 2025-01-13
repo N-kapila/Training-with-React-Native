@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Pressable} from "react-native";
+import { Image, StyleSheet, Pressable, Text} from "react-native";
 import { Link } from "expo-router";
 
 import { HelloWave } from "@/components/HelloWave";
@@ -12,7 +12,7 @@ export default function HomeScreen() {
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#ffffff" }}
       headerImage={
         <Image
-          source={require("@/assets/images/my-img.png")}
+          source={require("@/assets/images/cover.png")}
           style={styles.reactLogo}
         />
       }
@@ -28,7 +28,7 @@ export default function HomeScreen() {
       <ThemedView style={styles.stepContainer}>
         <Link href={"/contact"} style={{marginHorizontal:"auto"}} asChild>
         <Pressable style={styles.button}>
-            Contact Us 
+           <Text style={styles.buttonText}>Contact Me  </Text> 
         </Pressable>
         </Link>  
       </ThemedView>
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",
+    textAlign: "center",
     gap: 8,
   },
   stepContainer: {
@@ -48,9 +49,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   reactLogo: {
-    height: "100%",
-    width: 290,
-   flex: 1,
+    flex: 1,
     alignSelf: "center",
     justifyContent: "center",
   },
@@ -74,5 +73,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     fontSize: 20,
     borderRadius: 10,
+  },
+  buttonText:{
+    color: "white",
+    textAlign: "center",
+    justifyContent: "center",
+    fontSize: 20,
   }
 });
