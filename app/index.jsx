@@ -32,6 +32,14 @@ export default function HomeScreen() {
         </Pressable>
         </Link>  
       </ThemedView>
+
+       <ThemedView style={styles.stepContainer}>
+        <Link href={"/menu"} style={{marginHorizontal:"auto"}} asChild>
+        <Pressable style={styles.button}>
+           <Text style={styles.buttonText}>Menu  </Text> 
+        </Pressable>
+        </Link>  
+      </ThemedView>
      
     </ParallaxScrollView>
   );
