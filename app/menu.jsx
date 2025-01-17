@@ -16,7 +16,7 @@ export default function MenuScreen() {
     //const separatorComp = <View style={styles.separator} />
 
     //const headerComp = <Text>Top of List</Text>
-   // const footerComp = <Text style={{ color: theme.text }}>End of Menu</Text>
+    const footerComp = <Text style={{ color: theme.text }}>End of Menu</Text>
 
     return (
         <Container>
@@ -28,7 +28,7 @@ export default function MenuScreen() {
                 contentContainerStyle={styles.contentContainer}
                 //ItemSeparatorComponent={separatorComp}
                 //ListHeaderComponent={headerComp}
-                //ListFooterComponent={footerComp}
+                ListFooterComponent={footerComp}
                 ListFooterComponentStyle={styles.footerComp}
                 ListEmptyComponent={<Text>No items</Text>}
                 renderItem={({ item }) => (
