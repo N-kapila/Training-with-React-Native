@@ -8,7 +8,7 @@ import { ThemedView } from "@/components/ThemedView";
 import foodImg from "@/assets/images/food-six.jpg";
 import beveImg from "@/assets/images/food-eight.jpg";
 
-export default function HomeScreen() {
+export default function MenuScreen() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#ffffff" }}

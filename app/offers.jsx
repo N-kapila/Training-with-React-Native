@@ -4,7 +4,7 @@ import { Colors } from '@/constants/Colors';
 import { MENU_ITEMS } from '@/constants/MenuItems'
 import MENU_IMAGES from '@/constants/MenuImages'
 
-export default function SpecialScreen() {
+export default function OffersScreen() {
     const colorScheme = Appearance.getColorScheme()
 
     const theme = colorScheme === 'dark' ? Colors.dark : Colors.light;
