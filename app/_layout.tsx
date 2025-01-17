@@ -37,6 +37,11 @@ export default function RootLayout() {
           options={{ title: "Home", headerShown: false }}
         />
         <Stack.Screen name="contact" options={{ title: "Contact Us" }} />
+        <Stack.Screen name="menu" options={{ title: "Our Menu" }} />
+        <Stack.Screen name="special" options={{ title: "Today's Special" }} />
+        <Stack.Screen name="offers" options={{ title: "Special Offers" }} />
+        <Stack.Screen name="foodMenu" options={{ title: "Foods" }} />
+        <Stack.Screen name="beverageMenu" options={{ title: "Beverages" }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

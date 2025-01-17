@@ -37,7 +37,7 @@ export default function HomeScreen() {
         resizeMode="cover"
         style={styles.image}
       >
-        <Link href={"/menu"} style={{marginHorizontal:"auto"}} asChild>
+        <Link href={"/special"} style={{marginHorizontal:"auto"}} asChild>
         <Pressable style={styles.button}>
            <Text style={styles.buttonText}>🌟 Today's Special 🌟 </Text> 
         </Pressable>
@@ -65,7 +65,7 @@ export default function HomeScreen() {
         resizeMode="cover"
         style={styles.image}
       >
-        <Link href={"/menu"} style={{marginHorizontal:"auto"}} asChild>
+        <Link href={"/offers"} style={{marginHorizontal:"auto"}} asChild>
         <Pressable style={styles.button}>
            <Text style={styles.buttonText}>Offers  🎉 </Text> 
         </Pressable>

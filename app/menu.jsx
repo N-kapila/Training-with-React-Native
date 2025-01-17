@@ -1,103 +1,110 @@
-import { StyleSheet, Appearance, Platform, SafeAreaView, ScrollView, FlatList, View, Text, Image } from "react-native";
+import { Image, StyleSheet, Pressable, Text, ImageBackground} from "react-native";
+import { Link } from "expo-router";
 
-import { Colors } from '@/constants/Colors';
-import { MENU_ITEMS } from '@/constants/MenuItems'
-import MENU_IMAGES from '@/constants/MenuImages'
+import ParallaxScrollView from "@/components/ParallaxScrollView";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 
-export default function MenuScreen() {
-    const colorScheme = Appearance.getColorScheme()
+import foodImg from "@/assets/images/food-six.jpg";
+import beveImg from "@/assets/images/food-eight.jpg";
 
-    const theme = colorScheme === 'dark' ? Colors.dark : Colors.light;
+export default function HomeScreen() {
+  return (
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: "#A1CEDC", dark: "#ffffff" }}
+      headerImage={
+        <Image
+          source={require("@/assets/images/food-one.png")}
+          style={styles. coverImage}
+        />
+      }
+    >
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="subtitle">Discover the flavors of our</ThemedText> 
+        <Text style={styles.highlight}>Signature Dishes!</Text>
+      </ThemedView>
 
-    const styles = createStyles(theme, colorScheme)
+       <ThemedView style={styles.stepContainer}>
+         <ImageBackground
+        source={foodImg}
+        resizeMode="cover"
+        style={styles.image}
+      >
+        <Link href={"/foodMenu"} style={{marginHorizontal:"auto"}} asChild>
+        <Pressable style={styles.button}>
+           <Text style={styles.buttonText}>Foods 🍜</Text> 
+        </Pressable>
+        </Link>  
+        </ImageBackground>
+      </ThemedView>
 
-    const Container = Platform.OS === 'web' ? ScrollView : SafeAreaView;
-
-    //const separatorComp = <View style={styles.separator} />
-
-    //const headerComp = <Text>Top of List</Text>
-    const footerComp = <Text style={{ color: theme.text }}>End of Menu</Text>
-
-    return (
-        <Container>
-
-            <FlatList
-                data={MENU_ITEMS}
-                keyExtractor={(item) => item.id.toString()}
-                showsVerticalScrollIndicator={false}
-                contentContainerStyle={styles.contentContainer}
-                //ItemSeparatorComponent={separatorComp}
-                //ListHeaderComponent={headerComp}
-                ListFooterComponent={footerComp}
-                ListFooterComponentStyle={styles.footerComp}
-                ListEmptyComponent={<Text>No items</Text>}
-                renderItem={({ item }) => (
-                    <View style={styles.row}>
-                        <View style={styles.menuTextRow}>
-                            <Text style={[styles.menuItemTitle, styles.menuItemText]}>{item.title}</Text>
-                            <Text style={styles.menuItemText}>{item.description}</Text>
-                        </View>
-                        <Image
-                            source={MENU_IMAGES[item.id - 1]}
-                            style={styles.menuImage}
-                        />
-                    </View>
-                )}
-            />
-
-        </Container>
-    )
+       <ThemedView style={styles.stepContainer}>
+        <ImageBackground
+        source={beveImg}
+        resizeMode="cover"
+        style={styles.image}
+      >
+        <Link href={"/beverageMenu"} style={{marginHorizontal:"auto"}} asChild>
+        <Pressable style={styles.button}>
+           <Text style={styles.buttonText}>Beverages 🍹</Text> 
+        </Pressable>
+        </Link>  
+        </ImageBackground>
+      </ThemedView>
+     
+    </ParallaxScrollView>
+  );
 }
 
-function createStyles(theme, colorScheme) {
-    return StyleSheet.create({
-        contentContainer: {
-            paddingTop: 10,
-            paddingBottom: 20,
-            paddingHorizontal: 12,
-            backgroundColor: theme.background,
-        },
-        separator: {
-            height: 1,
-            backgroundColor: colorScheme === 'dark' ? 'papayawhip' : "#000",
-            width: '50%',
-            maxWidth: 300,
-            marginHorizontal: 'auto',
-            marginBottom: 10,
-        },
-        footerComp: {
-            marginHorizontal: 'auto',
-        },
-        row: {
-            flexDirection: 'row',
-            width: '100%',
-            maxWidth: 600,
-            height: 100,
-            marginBottom: 10,
-            borderStyle: 'solid',
-            borderColor: colorScheme === 'dark' ? 'papayawhip' : '#000',
-            borderWidth: 1,
-            borderRadius: 20,
-            overflow: 'hidden',
-            marginHorizontal: 'auto',
-        },
-        menuTextRow: {
-            width: '65%',
-            paddingTop: 10,
-            paddingLeft: 10,
-            paddingRight: 5,
-            flexGrow: 1,
-        },
-        menuItemTitle: {
-            fontSize: 18,
-            textDecorationLine: 'underline',
-        },
-        menuItemText: {
-            color: theme.text,
-        },
-        menuImage: {
-            width: 100,
-            height: 100,
-        }
-    })
-}
+const styles = StyleSheet.create({
+  coverImage: {
+    flex: 1,
+    height: "100%",
+    width:"100%",
+    alignSelf: "center",
+    justifyContent: "center",
+  },
+  titleContainer: {
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+    gap: 8,
+  },
+  highlight: {
+    fontWeight: "bold",
+    color: "#00AEEF",
+    fontSize: 40,
+  },
+  stepContainer: {
+    height: 200,
+    width: "auto",
+   
+    gap: 8,
+    marginBottom: 8,
+  },
+  button:{
+    width: "100%",
+    height: 50,
+    backgroundColor: 'rgba(67, 67, 67, 0.5)',
+    color: "white",
+    textAlign: "center",
+    justifyContent: "center",
+    fontSize: 20,
+    borderRadius: 10,
+  },
+  buttonText:{
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+    justifyContent: "center",
+    fontSize: 25,
+  },
+   image: {
+    width: '100%',
+    height: '100%',
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    opacity: 0.8,
+  },
+});
